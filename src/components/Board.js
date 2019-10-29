@@ -8,6 +8,12 @@ function Board() {
     '', '', ''
   ])
 
+  const updateBoardAtIndex = (index) => {
+    const copyOfBoard = [...boardContent]
+    copyOfBoard[index] = 'X'
+    setBoardContent(copyOfBoard)
+  }
+
   return (
     <>
       <div style={{
@@ -15,28 +21,24 @@ function Board() {
         gridTemplateColumns: 'repeat(3, 100px)',
         gridTemplateRows: 'repeat(3, 100px)'
       }}>
-        <Cell content={boardContent[0]} />
-        <Cell content={boardContent[1]} />
-        <Cell content={boardContent[2]} />
-        <Cell content={boardContent[3]} />
-        <Cell content={boardContent[4]} />
-        <Cell content={boardContent[5]} />
-        <Cell content={boardContent[6]} />
-        <Cell content={boardContent[7]} />
-        <Cell content={boardContent[8]} />
+        <Cell
+          index={0}
+          content={boardContent[0]}
+          updateForGivenIndex={updateBoardAtIndex}
+        />
+        <Cell index={1} content={boardContent[1]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={2} content={boardContent[2]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={3} content={boardContent[3]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={4} content={boardContent[4]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={5} content={boardContent[5]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={6} content={boardContent[6]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={7} content={boardContent[7]} updateForGivenIndex={updateBoardAtIndex} />
+        <Cell index={8} content={boardContent[8]} updateForGivenIndex={updateBoardAtIndex} />
       </div>
       <div
         onClick={() => {
-          // assume we're updating row index 0 and column index 0
           const copyOfBoard = [...boardContent]
-          // const copyOfBoard = [
-          //   [...boardContent[0]],
-          //   [...boardContent[1]],
-          //   [...boardContent[2]]
-          // ]
-
           copyOfBoard[0] = 'X'
-
           setBoardContent(copyOfBoard)
         }}
       >

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cell({ content }) {
+function Cell({ content, index, updateForGivenIndex }) {
     // kebab-case
     // snake_case
     // camelCase
@@ -9,6 +9,7 @@ function Cell({ content }) {
 
   return (
     <button
+      onClick={() => updateForGivenIndex(index)}
       style={{
         backgroundColor: 'light blue',
         height: '100px',
