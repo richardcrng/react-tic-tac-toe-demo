@@ -13,16 +13,12 @@ function App() {
   ])
 
   const hasSomebodyWon = checkForVictory(boardContent)
+
   const numberOfTurnsPlayed = boardContent.reduce(
-    (acc, cellContent) => {
-      // if (cellContent === '') {
-      //   return acc
-      // } else {
-      //   return acc + 1
-      // }
-      return cellContent === '' ? acc : acc + 1
-    },
+    (acc, cellContent) => cellContent === '' ? acc : acc + 1,
     0)
+
+  const isGameOver = hasSomebodyWon || numberOfTurnsPlayed === 9
 
   const characterToPlay = numberOfTurnsPlayed % 2
     ? 'O'
@@ -36,7 +32,10 @@ function App() {
 
   return (
     <>
-      <RestartButton setBoardContent={setBoardContent} />
+      <RestartButton
+        show={isGameOver}
+        setBoardContent={setBoardContent}
+      />
       <Board
         boardContent={boardContent}
         updateBoardAtIndex={updateBoardAtIndex}
