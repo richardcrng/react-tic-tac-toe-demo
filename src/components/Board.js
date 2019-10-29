@@ -21,19 +21,20 @@ function Board() {
         gridTemplateColumns: 'repeat(3, 100px)',
         gridTemplateRows: 'repeat(3, 100px)'
       }}>
-        <Cell
-          index={0}
-          content={boardContent[0]}
-          updateForGivenIndex={updateBoardAtIndex}
-        />
-        <Cell index={1} content={boardContent[1]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={2} content={boardContent[2]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={3} content={boardContent[3]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={4} content={boardContent[4]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={5} content={boardContent[5]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={6} content={boardContent[6]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={7} content={boardContent[7]} updateForGivenIndex={updateBoardAtIndex} />
-        <Cell index={8} content={boardContent[8]} updateForGivenIndex={updateBoardAtIndex} />
+        {
+          boardContent.map((cellContent, index) => {
+            return (
+              <Cell
+                // have to give each element a unique key when using map
+                key={index}
+
+                content={cellContent}
+                index={index}
+                updateForGivenIndex={updateBoardAtIndex}
+              />
+            )
+          })
+        }
       </div>
       <div
         onClick={() => {
