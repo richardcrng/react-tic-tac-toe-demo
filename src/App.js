@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <RestartButton />
+      <RestartButton setBoardContent={setBoardContent} />
       <Board
         boardContent={boardContent}
         updateBoardAtIndex={updateBoardAtIndex}
