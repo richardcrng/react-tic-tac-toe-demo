@@ -8,6 +8,19 @@ function Board() {
     '', '', ''
   ])
 
+  const numberOfTurnsPlayed = boardContent.reduce(
+    (acc, cellContent) => {
+      // if (cellContent === '') {
+      //   return acc
+      // } else {
+      //   return acc + 1
+      // }
+      return cellContent === '' ? acc : acc + 1
+    },
+    0)
+
+  console.log('number of turns played', numberOfTurnsPlayed)
+
   const updateBoardAtIndex = (index) => {
     const copyOfBoard = [...boardContent]
     copyOfBoard[index] = 'X'
