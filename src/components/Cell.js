@@ -9,7 +9,11 @@ function Cell({ content, index, updateForGivenIndex }) {
 
   return (
     <button
-      onClick={() => updateForGivenIndex(index)}
+      onClick={() => {
+        if (content === '') {
+          updateForGivenIndex(index)
+        }
+      }}
       style={{
         backgroundColor: 'light blue',
         height: '100px',
