@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cell({ boardContent }) {
+function Cell({ content }) {
     // kebab-case
     // snake_case
     // camelCase
@@ -15,7 +15,7 @@ function Cell({ boardContent }) {
         width: '100px'
       }}
     >
-      {boardContent}
+      {content}
     </button>
   )
 }
