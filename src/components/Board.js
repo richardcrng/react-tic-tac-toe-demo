@@ -2,11 +2,11 @@ import React from 'react';
 import Cell from './Cell'
 
 function Board() {
-  const boardContent = [
+  const [boardContent, setBoardContent] = React.useState([
     ['', '', ''],
-    ['', 'X', ''],
-    ['', 'O', 'X']
-  ]
+    ['', '', ''],
+    ['', '', '']
+  ])
 
   return (
     <div style={{
