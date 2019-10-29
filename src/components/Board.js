@@ -19,11 +19,15 @@ function Board() {
     },
     0)
 
-  console.log('number of turns played', numberOfTurnsPlayed)
+  const characterToPlay = numberOfTurnsPlayed % 2
+    ? 'O'
+    : 'X'
+
+  console.log('number of turns played', numberOfTurnsPlayed, characterToPlay)
 
   const updateBoardAtIndex = (index) => {
     const copyOfBoard = [...boardContent]
-    copyOfBoard[index] = 'X'
+    copyOfBoard[index] = characterToPlay
     setBoardContent(copyOfBoard)
   }
 
