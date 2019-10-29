@@ -12,13 +12,14 @@ function App() {
     '', '', ''
   ])
 
-  const hasSomebodyWon = checkForVictory(boardContent)
+  const winningPlayer = checkForVictory(boardContent)
+  console.log('player who won', winningPlayer)
 
   const numberOfTurnsPlayed = boardContent.reduce(
     (acc, cellContent) => cellContent === '' ? acc : acc + 1,
     0)
 
-  const isGameOver = hasSomebodyWon || numberOfTurnsPlayed === 9
+  const isGameOver = winningPlayer || numberOfTurnsPlayed === 9
 
   const characterToPlay = numberOfTurnsPlayed % 2
     ? 'O'
@@ -40,7 +41,10 @@ function App() {
         boardContent={boardContent}
         updateBoardAtIndex={updateBoardAtIndex}
       />
-      <Message />
+      <Message
+        winningPlayer={winningPlayer}
+        isGameOver={isGameOver}
+      />
     </>
   );
 }
@@ -56,10 +60,14 @@ const WIN_COMBINATIONS = [
   [2, 4, 6]
 ]
 
-const checkForVictory = (board) => (
-  WIN_COMBINATIONS.some(([firstIndex, secondIndex, thirdIndex]) => (
-    board[firstIndex] === board[secondIndex] && board[secondIndex] === board[thirdIndex] && board[firstIndex] !== ''
+const checkForVictory = (board) => {
+  const winningCombination = WIN_COMBINATIONS.find(
+    ([firstIndex, secondIndex, thirdIndex]) => (
+      board[firstIndex] === board[secondIndex] && board[secondIndex] === board[thirdIndex] && board[firstIndex] !== ''
   )) 
-)
+  return winningCombination
+    ? board[winningCombination[0]]
+    : false
+}
 
 export default App;
