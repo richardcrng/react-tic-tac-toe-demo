@@ -1,36 +1,7 @@
 import React from 'react';
 import Cell from './Cell'
 
-function Board() {
-  const [boardContent, setBoardContent] = React.useState([
-    '', '', '',
-    '', '', '',
-    '', '', ''
-  ])
-
-  const numberOfTurnsPlayed = boardContent.reduce(
-    (acc, cellContent) => {
-      // if (cellContent === '') {
-      //   return acc
-      // } else {
-      //   return acc + 1
-      // }
-      return cellContent === '' ? acc : acc + 1
-    },
-    0)
-
-  const characterToPlay = numberOfTurnsPlayed % 2
-    ? 'O'
-    : 'X'
-
-  console.log('number of turns played', numberOfTurnsPlayed, characterToPlay)
-
-  const updateBoardAtIndex = (index) => {
-    const copyOfBoard = [...boardContent]
-    copyOfBoard[index] = characterToPlay
-    setBoardContent(copyOfBoard)
-  }
-
+function Board({ boardContent, updateBoardAtIndex }) {
   return (
     <>
       <div style={{
@@ -52,15 +23,6 @@ function Board() {
             )
           })
         }
-      </div>
-      <div
-        onClick={() => {
-          const copyOfBoard = [...boardContent]
-          copyOfBoard[0] = 'X'
-          setBoardContent(copyOfBoard)
-        }}
-      >
-        Demonstration of update function
       </div>
     </>
   )
