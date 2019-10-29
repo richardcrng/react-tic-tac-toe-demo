@@ -3,9 +3,9 @@ import Cell from './Cell'
 
 function Board() {
   const [boardContent, setBoardContent] = React.useState([
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', '']
+    '', '', '',
+    '', '', '',
+    '', '', ''
   ])
 
   return (
@@ -15,26 +15,27 @@ function Board() {
         gridTemplateColumns: 'repeat(3, 100px)',
         gridTemplateRows: 'repeat(3, 100px)'
       }}>
-        <Cell content={boardContent[0][0]} />
-        <Cell content={boardContent[0][1]} />
-        <Cell content={boardContent[0][2]} />
-        <Cell content={boardContent[1][0]} />
-        <Cell content={boardContent[1][1]} />
-        <Cell content={boardContent[1][2]} />
-        <Cell content={boardContent[2][0]} />
-        <Cell content={boardContent[2][1]} />
-        <Cell content={boardContent[2][2]} />
+        <Cell content={boardContent[0]} />
+        <Cell content={boardContent[1]} />
+        <Cell content={boardContent[2]} />
+        <Cell content={boardContent[3]} />
+        <Cell content={boardContent[4]} />
+        <Cell content={boardContent[5]} />
+        <Cell content={boardContent[6]} />
+        <Cell content={boardContent[7]} />
+        <Cell content={boardContent[8]} />
       </div>
       <div
         onClick={() => {
           // assume we're updating row index 0 and column index 0
-          const copyOfBoard = [
-            [...boardContent[0]],
-            [...boardContent[1]],
-            [...boardContent[2]]
-          ]
+          const copyOfBoard = [...boardContent]
+          // const copyOfBoard = [
+          //   [...boardContent[0]],
+          //   [...boardContent[1]],
+          //   [...boardContent[2]]
+          // ]
 
-          copyOfBoard[0][0] = 'X'
+          copyOfBoard[0] = 'X'
 
           setBoardContent(copyOfBoard)
         }}
